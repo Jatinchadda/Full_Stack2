@@ -21,11 +21,11 @@ Bringing communities closer through memorable events.
 
 ## Screenshots:
 
-![Event Management Dashboard](event-dashboard/image.png)
+![Event Management Dashboard](screenshots/image.png)
 
-![Event Management Dashboard](event-dashboard/image-1.png)
+![Event Management Dashboard](screenshots/image-1.png)
 
-![Event Management Dashboard](event-dashboard/image-2.png)
+![Event Management Dashboard](screenshots/image-2.png)
 
-![Event Management Dashboard](event-dashboard/image-3.png)
+![Event Management Dashboard](screenshots/image-3.png)
 
