@@ -4,13 +4,13 @@ import {lazy, Suspense} from 'react';
 
 // Lazy load pages - Code splitting happens here
 // Add a small artificial delay so the loading state is visible during demo
-const lazyWithDelay = (factory, ms = 1000) =>
+const lazyWithDelay = (factory, ms = 2500) =>
   lazy(() => new Promise((res) => setTimeout(res, ms)).then(() => factory()));
 
-const Home = lazyWithDelay(() => import('./pages/Home'), 1000);
-const Contact = lazyWithDelay(() => import('./pages/Contact'), 1000);
-const Services = lazyWithDelay(() => import('./pages/Services'), 1000);
-const About = lazyWithDelay(() => import('./pages/About'), 1000);
+const Home = lazyWithDelay(() => import('./pages/Home'), 2500);
+const Contact = lazyWithDelay(() => import('./pages/Contact'), 2500);
+const Services = lazyWithDelay(() => import('./pages/Services'), 2500);
+const About = lazyWithDelay(() => import('./pages/About'), 2500);
 
 // Loading component
 const Loading = () => (

@@ -2,7 +2,7 @@
 
 ## About
 
-This experiment demonstrates lazy loading and code splitting in React applications. Each page is loaded only when needed, reducing the initial bundle size and improving overall application performance..
+This experiment demonstrates lazy loading and code splitting in React applications with interactive components. Each page is loaded only when needed, reducing the initial bundle size and improving overall application performance. The application includes a 2.5-second artificial delay to simulate real-world network conditions and show the Suspense loading state.
 
 ## Key Features
 
@@ -18,11 +18,11 @@ This experiment demonstrates lazy loading and code splitting in React applicatio
 5.2/
 ├── src/
 │   ├── pages/
-│   │   ├── Home.jsx          # Home page (lazy loaded)
-│   │   ├── Contact.jsx       # Contact form (lazy loaded)
-│   │   ├── Dashboard.jsx     # Dashboard page (lazy loaded)
-│   │   └── About.jsx         # About page (lazy loaded)
-│   ├── App.jsx               # Main app with routing & lazy loading
+│   │   ├── Home.jsx          # Home with click counter & expand/collapse demo
+│   │   ├── Contact.jsx       # Contact form with validation & feedback
+│   │   ├── Services.jsx      # Services with click-to-expand & rating demo
+│   │   └── About.jsx         # About with collapsible benefits & version counter
+│   ├── App.jsx               # Main app with routing & lazy loading (2.5s delay)
 │   ├── App.css               # Styles
 │   ├── main.jsx              # Entry point
 │   └── index.css             # Global styles
@@ -49,26 +49,32 @@ This experiment demonstrates lazy loading and code splitting in React applicatio
 
 ### 1. **Home Page**
    - Introduction to lazy loading
+   - **Interactive Demo:** Click counter with +1 button and reset
+   - Collapsible "Show Details" section
    - Key features overview
    - Navigation guide
 
 ### 2. **Contact Page**
-   - Functional contact form
-   - Form validation
+   - Functional contact form with validation
+   - Form fields: Name, Email, Message
    - Success message on submission
+   - Auto-clear form after 2 seconds
    - Lazy loaded on demand
 
-### 3. **Dashboard Page**
-   - Statistics cards
-   - Performance insights
-   - Data visualization
+### 3. **Services Page**
+   - Service cards with pricing
+   - **Interactive Elements:**
+     - Click card to expand and view details
+     - 👍 Rate button with counter (tracks rating votes)
+   - Service options: Web Development, Mobile Apps, Consulting, Support
    - Code split into separate chunk
 
 ### 4. **About Page**
-   - Explanation of lazy loading
-   - How it works
-   - Benefits and advantages
-   - Implementation details
+   - Explanation of lazy loading & code splitting
+   - **Interactive Benefits List:** Click to expand each benefit with detailed explanation
+   - Version counter that increments
+   - DevTools debugging tips
+   - Implementation details for this demo
 
 ## Technologies Used
 
@@ -101,32 +107,17 @@ This experiment demonstrates lazy loading and code splitting in React applicatio
 ## How Lazy Loading Works
 
 1. When app loads, only Home page code is bundled
-2. Each page (Contact, Dashboard, About) gets a separate chunk
+2. Each page (Contact, Services, About) gets a separate chunk
 3. When you navigate to a page, React requests that chunk
-4. Suspense shows loading state while chunk downloads
-5. Parser loads and renders the component
-6. Browser shows the loaded page
+4. A 2.5-second artificial delay simulates network conditions
+5. Suspense shows loading spinner while chunk downloads
+6. Component loads and renders with interactive features
+7. Browser shows the loaded page
 
 ## Try It Out
 
-Navigate between pages and observe:
-- Loading spinner appears briefly
-- Pages load only when needed
-- URL updates without full page reload
-- Each page chunk is fetched separately
-- Smooth user experience with fallback UI
-
-## Browser DevTools Inspection
-
-In Chrome DevTools Network tab, you can:
-1. Go to Network tab
-2. Navigate between pages
-3. See each page's chunk being fetched
-4. Observe file sizes (chunks are smaller individually)
-5. Check waterfall for optimized loading sequence
-
-
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
-![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+![alt text](image-6.png)
+![alt text](image-7.png)
+![alt text](image-8.png)
