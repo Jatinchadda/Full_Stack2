@@ -2,7 +2,7 @@
 
 ## About
 
-This experiment demonstrates lazy loading and code splitting in React applications. Each page is loaded only when needed, reducing the initial bundle size and improving overall application performance.
+This experiment demonstrates lazy loading and code splitting in React applications. Each page is loaded only when needed, reducing the initial bundle size and improving overall application performance..
 
 ## Key Features
 
