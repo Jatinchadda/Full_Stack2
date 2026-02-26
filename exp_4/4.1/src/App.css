@@ -158,3 +158,59 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* theme variations */
+
+body.light,
+.app-container.light {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+body.dark,
+.app-container.dark {
+  background-color: #222;
+  color: #eee;
+}
+
+/* dark theme adjustments for elements */
+body.dark .header,
+.app-container.dark .header {
+  background: #111;
+  color: #fff;
+}
+
+body.dark .card,
+.app-container.dark .card {
+  background: #333;
+  border-color: #444;
+}
+
+body.dark button {
+  background: #555;
+  color: #eee;
+  border-color: #666;
+}
+
+body.dark button:hover {
+  background: #666;
+}
+
+body.dark .btn-primary {
+  background: #388E3C;
+}
+
+body.dark .btn-secondary {
+  background: #1976D2;
+}
+
+body.dark .btn-danger {
+  background: #D32F2F;
+}
+
+body.dark .state-display,
+body.dark .user-info,
+body.dark .action-list {
+  background: #2a2a2a;
+  border-color: #444;
+}

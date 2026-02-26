@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const GlobalContext = createContext();
 
@@ -15,6 +15,13 @@ export const GlobalProvider = ({ children }) => {
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
+
+  // keep the <body> element in sync with the selected theme so that
+  // global styles can target `body.light` / `body.dark` if needed.
+  useEffect(() => {
+    document.body.classList.remove('light', 'dark');
+    document.body.classList.add(theme);
+  }, [theme]);
 
   const updateUser = (userData) => {
     setUser(userData);

@@ -82,3 +82,7 @@ Displays notifications triggered by state changes showing real-time updates.
 ✅ `useContext()` hook - Consuming context in components  
 ✅ Global state management - Avoiding prop drilling  
 ✅ State updates across components - Synchronization  
+
+
+![alt text](image.png)
+![alt text](image-1.png)
