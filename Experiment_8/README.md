@@ -66,6 +66,10 @@ This experiment demonstrates the development of a RESTful API using Spring Boot.
 
 ## Screenshots
 
+### START SERVER
+![GET Screenshot](image.png)
+*Screenshot showing the Start on port 8080.*
+
 ### GET Request
 ![GET Screenshot](get.png)
 *Screenshot showing the GET request to retrieve all students.*
