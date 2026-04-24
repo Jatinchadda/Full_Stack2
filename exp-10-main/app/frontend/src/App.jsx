@@ -10,8 +10,8 @@ const SOCKET_URL = 'http://localhost:8080/ws'
 export default function App() {
   const [messages, setMessages] = useState([])
   const [name, setName] = useState(() => localStorage.getItem('chatName') || '')
+  const [pendingName, setPendingName] = useState(name)
   const [connected, setConnected] = useState(false)
-  const [pendingName, setPendingName] = useState('')
   const stompRef = useRef(null)
   const pendingJoinRef = useRef(false)
 
@@ -26,7 +26,7 @@ export default function App() {
             const body = JSON.parse(msg.body)
             setMessages(prev => [...prev, body])
           } catch (e) {
-            console.error('Invalid message', e)
+            // ignore
           }
         })
         if (pendingJoinRef.current && pendingName) {
@@ -44,7 +44,6 @@ export default function App() {
     return () => client.deactivate()
   }, [])
 
-  // Try to load history from backend (optional)
   useEffect(() => {
     fetch('/api/messages')
       .then(r => { if (!r.ok) throw new Error('no-history'); return r.json() })
@@ -83,61 +82,24 @@ export default function App() {
   const clearLocal = () => setMessages([])
 
   return (
-    <div className="app-root">
-      <aside className="sidebar">
-        <h1>TiraTalk</h1>
-        <p className="muted">Real-time chat demo</p>
-
-        {name ? (
-          <div className="user-box">
-            <div className="avatar" style={{ background: `linear-gradient(135deg, ${stringToColor(name)}, ${shadeColor(stringToColor(name), -20)})` }}>{name.charAt(0).toUpperCase()}</div>
-            <div className="user-meta">
-              <div className="user-name">{name}</div>
-              <div className="user-status">{connected ? 'Connected' : 'Offline'}</div>
-            </div>
-            <button className="link" onClick={leave}>Leave</button>
-          </div>
-        ) : (
-          <div className="join-box">
-            <input className="name-input" placeholder="Enter your display name" value={pendingName} onChange={e => setPendingName(e.target.value)} />
-            <button onClick={join} className="primary">Join</button>
-          </div>
-        )}
-
-        <div className="sidebar-actions">
-          <button onClick={clearLocal} className="secondary">Clear local chat</button>
+    <div className="chat-center">
+      <h1>WebSocket Chat</h1>
+      <div className="chat-card">
+        <div className="name-row">
+          <input className="name-input" placeholder="Name" value={pendingName} onChange={e => setPendingName(e.target.value)} />
+          {name ? <button className="small-btn" onClick={leave}>Leave</button> : <button className="small-btn" onClick={join}>Join</button>}
         </div>
 
-        <footer className="sidebar-foot muted">Backend: {connected ? 'online' : 'offline'}</footer>
-      </aside>
+        <div className="chat-window">
+          <MessageList messages={messages} currentUser={name} />
+        </div>
 
-      <main className="main">
-        <MessageList messages={messages} currentUser={name} />
-        <MessageInput onSend={sendMessage} disabled={!name || !connected} />
-      </main>
+        <div className="controls-row">
+          <MessageInput onSend={sendMessage} disabled={!name || !connected} />
+          <button className="tiny secondary" onClick={clearLocal}>Clear</button>
+        </div>
+      </div>
     </div>
   )
-}
 
-// Helpers
-function stringToColor(str) {
-  if (!str) return '#888'
-  let hash = 0
-  for (let i = 0; i < str.length; i++) hash = str.charCodeAt(i) + ((hash << 5) - hash)
-  const h = Math.abs(hash) % 360
-  return `hsl(${h} 70% 60%)`
-}
-
-function shadeColor(hsl, percent) {
-  // expecting hsl string like 'hsl(H S% L%)'
-  try {
-    const parts = hsl.replace(/[hsl()%]/g, '').trim().split(/\s+/)
-    const h = parts[0]
-    const s = parts[1]
-    let l = parseFloat(parts[2])
-    l = Math.max(0, Math.min(100, l + percent))
-    return `hsl(${h} ${s}% ${l}%)`
-  } catch (e) {
-    return hsl
-  }
 }
