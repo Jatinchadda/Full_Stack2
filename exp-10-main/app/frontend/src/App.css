@@ -1,0 +1,41 @@
+:root{
+  --bg: #fbf7f2;
+  --accent: #7c3aed;
+  --muted: #6b7280;
+  --panel: #ffffff;
+}
+*{box-sizing:border-box}
+body,html,#root{height:100%;margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg)}
+.app-root{display:flex;min-height:100vh}
+.sidebar{width:300px;padding:28px;background:linear-gradient(180deg,#fff 0%,#fbfbfb 100%);border-right:1px solid #eee}
+.sidebar h1{margin:0 0 6px;color:var(--accent)}
+.muted{color:var(--muted);font-size:13px}
+.join-box{display:flex;gap:8px;align-items:center;margin-top:16px}
+.name-input{flex:1;padding:10px;border-radius:8px;border:1px solid #e6e6e6}
+.primary{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.link{background:none;border:none;color:var(--accent);cursor:pointer}
+.user-box{display:flex;align-items:center;gap:12px;margin-top:16px}
+.avatar{width:48px;height:48px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.user-meta{flex:1}
+.user-name{font-weight:600}
+.sidebar-actions{margin-top:20px}
+.secondary{background:transparent;border:1px solid #e6e6e6;padding:8px;border-radius:8px;cursor:pointer}
+.sidebar-foot{margin-top:20px;font-size:12px}
+
+.main{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:24px}
+.message-list{flex:1;overflow:auto;padding-bottom:12px}
+.msg-join{text-align:center;color:var(--muted);margin:10px 0}
+.message-row{display:flex;align-items:flex-end;gap:12px;margin:8px 0}
+.message-row.mine{flex-direction:row-reverse}
+.avatar-small{width:36px;height:36px;border-radius:8px;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.avatar-small.mine{opacity:0.9}
+.bubble{max-width:70%;padding:10px 12px;border-radius:12px;border:1px solid transparent;background:var(--panel);box-shadow:0 2px 6px rgba(16,24,40,0.04)}
+.bubble .sender{font-size:12px;color:var(--muted);margin-bottom:6px}
+.bubble-mine{background:linear-gradient(135deg,#a7f3d0,#34d399);border-color:transparent;color:#064e3b}
+.content{white-space:pre-wrap}
+
+.message-input{display:flex;gap:8px;padding-top:12px}
+.message-field{flex:1;padding:10px;border-radius:10px;border:1px solid #eaeaea}
+.send-btn{background:var(--accent);color:#fff;border:none;padding:10px 14px;border-radius:10px;cursor:pointer}
+
+@media (max-width:800px){.sidebar{display:none}.main{padding:12px}}
