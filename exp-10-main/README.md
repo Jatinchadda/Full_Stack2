@@ -52,9 +52,7 @@ WebSocket / API Contract
 Screenshots
 -----------
 
-Place two screenshots here (or in `public/SS/`) and replace the paths below.
+![alt text](image-3.png)
 
-![Screenshot 1](./public/SS/screenshot1.png)
-
-![Screenshot 2](./public/SS/screenshot2.png)
+![alt text](image-2.png)
 
