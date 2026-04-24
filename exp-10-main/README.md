@@ -1,69 +1,60 @@
-# 💬 Experiment-10: WebSocket Chat Application
+# WebSocket Chat — Frontend
 
----
+Lightweight React + Vite frontend for the WebSocket chat demo.
 
-## 📌 Overview
-A full-stack real-time chat application using WebSocket for continuous communication between client and server.  
-Built with **Spring Boot (backend)** and **React (frontend)**.
+Overview
+--------
+This frontend connects to the Spring Boot WebSocket backend (SockJS + STOMP)
+and provides a compact, boxed chat UI. It supports display names, join/leave
+notifications, and local-only chat clearing. The UI is intentionally simple
+so you can plug it into the demo backend quickly.
 
----
+Key Features
+------------
+- Real-time chat using SockJS + STOMP
+- Display names with deterministic sender color
+- Join/Leave notifications
+- Local clear chat (clears only the current client's view)
 
-## 🎯 Objectives
-- Enable real-time messaging without HTTP polling  
-- Support multiple users with instant message broadcasting  
-- Build a responsive UI using React  
-- Integrate frontend and backend using STOMP protocol  
+Tech Stack
+----------
+- React + Vite
+- `sockjs-client` and `@stomp/stompjs`
 
----
+Run Locally
+-----------
+Start the backend (from repository root):
 
-## 🛠️ Tech Stack
-
-### 🔹 Backend
-- Java  
-- Spring Boot  
-- WebSocket  
-- STOMP  
-- SockJS  
-- Maven  
-
-### 🔹 Frontend
-- React  
-- Vite  
-- STOMP.js  
-- SockJS  
-
----
-
-## ✨ Features
-- 💬 Real-time text messaging  
-- 🖼️ Image sharing support  
-- 🎤 Voice message support  
-- ⚡ Live UI updates without refresh  
-- 🔌 WebSocket endpoint (`/ws`)  
-- 🔁 Message routing using `/app` and `/topic`  
-- 🔒 Handles connection, disconnection, and errors  
-
----
-
-## 📁 Project Structure
-
----
-
-## ⚙️ Working
-- Client connects to server via WebSocket  
-- Messages are sent using STOMP protocol  
-- Server processes and broadcasts messages  
-- All connected users receive messages instantly  
-
----
-
-## 🚀 How to Run
-
-### 🔹 Backend
-```bash
-cd backend
+```powershell
+$env:JAVA_HOME='C:\Program Files\Java\jdk-25.0.2'
+$env:PATH='C:\Program Files\Java\jdk-25.0.2\bin;' + $env:PATH
+cd /d D:\FS2\exp-10-main\demo_websocket
 .\mvnw.cmd spring-boot:run
+```
 
-cd frontend
+Start the frontend (in a separate terminal):
+
+```powershell
+cd /d D:\FS2\exp-10-main\app\frontend
 npm install
 npm run dev
+```
+
+Open http://localhost:3000 in two separate browser windows (or one normal + one private/incognito) and join with two different names to see real-time messaging.
+
+WebSocket / API Contract
+------------------------
+- SockJS endpoint: `http://localhost:8080/ws`
+- Subscribe topic: `/topic/public`
+- Send destination: `/app/chat.sendMessage`
+- (Optional) History API: `GET http://localhost:8080/api/messages` — used if backend provides it
+
+Screenshots
+-----------
+
+Place two screenshots here (or in `public/SS/`) and replace the paths below.
+
+![Screenshot 1](./public/SS/screenshot1.png)
+
+![Screenshot 2](./public/SS/screenshot2.png)
+
