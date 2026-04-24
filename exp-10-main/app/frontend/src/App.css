@@ -1,0 +1,32 @@
+:root{
+  --bg: #063434;
+  --card: rgba(0,0,0,0.12);
+  --muted: rgba(255,255,255,0.7);
+}
+
+*{box-sizing:border-box}
+body,html,#root{height:100%;margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg)}
+
+.chat-center{display:flex;flex-direction:column;align-items:center;padding-top:48px}
+.chat-center h1{color:#ffffff;margin:0 0 18px;font-size:34px}
+
+.chat-card{width:380px;display:flex;flex-direction:column;gap:10px}
+.name-row{display:flex;gap:8px}
+.name-input{flex:1;padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff}
+.small-btn{padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:#0a5a59;color:#fff;cursor:pointer}
+
+.chat-window{height:320px;border:1px solid rgba(255,255,255,0.06);padding:12px;overflow:auto;background:rgba(0,0,0,0.08);color:#e6fff5;border-radius:6px}
+.message-list-compact{display:flex;flex-direction:column}
+.chat-line{margin:6px 0}
+.chat-line.mine .sender{opacity:0.8}
+.sender{font-weight:700}
+.text{color:#e6fff5}
+.note{color:rgba(255,255,255,0.65);text-align:center;font-size:13px;margin:6px 0}
+
+.controls-row{display:flex;gap:8px;align-items:center}
+.message-input{flex:1;display:flex}
+.message-field{flex:1;padding:8px 10px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff}
+.send-btn{background:#0a5a59;color:#fff;padding:8px 12px;border-radius:6px;border:none;cursor:pointer}
+.secondary{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:8px 10px;border-radius:6px}
+
+@media (max-width:480px){.chat-card{width:94vw}}
